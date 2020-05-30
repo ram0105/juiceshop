@@ -44,4 +44,14 @@ public class JuiceShopTest {
         webDriver.findElement(By.id("password")).sendKeys(PASSWORD);
         webDriver.findElement(By.id("loginButton")).click();
     }
+
+    @Test
+    public void searchProduct(){
+
+    }
+
+    @Test
+    public void addProductToBasket(){
+
+    }
 }
