@@ -1,5 +1,6 @@
 package com.juiceshop;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,10 +15,9 @@ public class JuiceShopTest {
     String CHROME_DRIVER_PATH="/Users/ramprasanth/Downloads/chromedriver";
     WebDriverWait wait;
 
-
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_PATH);
+        WebDriverManager.chromedriver().setup();
         webDriver = new ChromeDriver();
         wait= new WebDriverWait(webDriver,20);
         webDriver.manage().window().maximize();
