@@ -17,7 +17,7 @@ public class DriverFactory {
     public static String environment = "remote";
     public static WebDriver webDriver;
     public static String hubUrl = "http://hub.com:4444/wd/hub";
-    public static String baseUrl = "http://localhost:3000";
+    public static String baseUrl = "http://juice-shop:3000";
     static String CHROME_DRIVER_PATH = "/Users/ramprasanth/Downloads/chromedriver";
     static DesiredCapabilities capabilities = new DesiredCapabilities();
 
