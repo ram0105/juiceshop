@@ -6,9 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BasketPage {
-    static WebDriver webDriver= DriverFactory.getDriver();
-    WebDriverWait wait= new WebDriverWait(webDriver,10);
+public class BasketPage extends HomePage {
     String ADD_TO_BASKET="button[aria-label='Add to Basket']";
     String BASKET="button[aria-label='Show the shopping cart']";
     String BASKET_ITEMS="app-basket mat-table mat-row";
@@ -23,6 +21,7 @@ public class BasketPage {
         for(String eachItem:items){
             homePage.searchProduct(eachItem);
             addToBasket();
+            closeGrowl();
         }
     }
     public void checkout(){

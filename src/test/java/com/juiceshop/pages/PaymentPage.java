@@ -1,15 +1,10 @@
 package com.juiceshop.pages;
 
-import com.juiceshop.testdriver.DriverFactory;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PaymentPage {
-    static  WebDriver webDriver= DriverFactory.getDriver();
-    WebDriverWait wait= new WebDriverWait(webDriver,10);
+public class PaymentPage extends HomePage {
     String SELECT_DELIVERY_ADDRESS="//mat-cell[text()[normalize-space() ='%s']]/parent::mat-row//mat-radio-button";
     String PROCEED_TO_PAYMENT_SELECTION ="button[aria-label='Proceed to payment selection']";
     String SELECT_DELIVERY_SPEED="//mat-cell[text()[normalize-space() ='%s']]/parent::mat-row//mat-radio-button";
@@ -43,6 +38,7 @@ public class PaymentPage {
         selectValueFromDropDown("Expiry Month",expiryMonth);
         selectValueFromDropDown("Expiry Year",expiryYear);
         webDriver.findElement(By.id(SUBMIT)).click();
+        closeGrowl();
     }
     public void fillText(String label,String value){
         webDriver.findElement(By.xpath(String.format(FILL_TEXT,label))).sendKeys(value);

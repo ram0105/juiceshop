@@ -2,6 +2,7 @@ package com.juiceshop.pages;
 
 import com.juiceshop.testdriver.DriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +25,9 @@ public class HomePage {
     String SECURITY_QUESTION_ANSWER = "securityAnswerControl";
     String REGISTER_ID = "registerButton";
     String WELCOME_BANNER = "//button[@aria-label='Close Welcome Banner']";
+    String ACCEPT_COOKIES = "a[aria-label='dismiss cookie message']";
+    String COOKIE_BANNER="div[aria-label='cookieconsent']";
+    String GROWL="//div[contains(@class,'cdk-overlay-container')]//button";
 
     public void login(String email, String password) {
         closeBanner();
@@ -57,6 +61,14 @@ public class HomePage {
     void closeBanner() {
         if (webDriver.findElements(By.xpath(WELCOME_BANNER)).size() > 0)
             webDriver.findElement(By.xpath(WELCOME_BANNER)).click();
+        if (webDriver.findElements(By.cssSelector(COOKIE_BANNER)).size() > 0 && webDriver.findElement(By.cssSelector(COOKIE_BANNER)).isDisplayed())
+            webDriver.findElement(By.cssSelector(ACCEPT_COOKIES)).click();
+    }
+
+    void closeGrowl(){
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(GROWL)));
+        JavascriptExecutor executor = (JavascriptExecutor) webDriver;
+        executor.executeScript("arguments[0].click();", webDriver.findElement(By.xpath(GROWL)));
     }
 
     void navigate(String url) {

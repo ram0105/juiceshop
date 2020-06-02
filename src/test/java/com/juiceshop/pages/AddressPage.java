@@ -5,8 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AddressPage {
-    static WebDriver webDriver= DriverFactory.getDriver();
+public class AddressPage extends HomePage {
     String ADD_ADDRESS="button[aria-label='Add a new address']";
     String COUNTRY="//input[contains(@placeholder,'country')]";
     String ADDRESS_LABEL="//input[contains(@placeholder,'name')]";
@@ -27,6 +26,7 @@ public class AddressPage {
         webDriver.findElement(By.xpath(CITY)).sendKeys(city);
         webDriver.findElement(By.xpath(STATE)).sendKeys(state);
         webDriver.findElement(By.xpath(SUBMIT)).click();
+        closeGrowl();
     }
 
 }
