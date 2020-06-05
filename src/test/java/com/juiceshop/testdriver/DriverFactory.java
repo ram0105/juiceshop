@@ -13,15 +13,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DriverFactory {
-    public static Browser browser = Browser.CHROME;
-    public static String environment = "remote";
-    public static WebDriver webDriver;
-    public static String hubUrl = "http://hub.com:4444/wd/hub";
-    public static String baseUrl = "http://juice-shop:3000";
+    public Browser browser = Browser.CHROME;
+    public String environment = "remote";
+    public WebDriver webDriver;
+    public String hubUrl = "http://hub.com:4444/wd/hub";
+    public String baseUrl = "http://juice-shop:3000";
     static String CHROME_DRIVER_PATH = "/Users/ramprasanth/Downloads/chromedriver";
     static DesiredCapabilities capabilities = new DesiredCapabilities();
 
-    public static WebDriver createDriver() {
+    public  WebDriver createDriver() {
         if (environment.equals("local")) {
             switch (browser) {
                 case CHROME:
@@ -52,10 +52,10 @@ public class DriverFactory {
                 e.printStackTrace();
             }
         }
-        throw new WebDriverException("Something went wrong browser");
+        throw new WebDriverException("Unknown browser and environment");
     }
 
-    public synchronized static WebDriver getDriver() {
+    public WebDriver getDriver() {
         if (webDriver != null) {
             return webDriver;
         } else {
@@ -66,7 +66,7 @@ public class DriverFactory {
         }
     }
 
-    public static void closeDriver() {
+    public void closeDriver() {
         if (webDriver != null)
             webDriver.quit();
     }

@@ -16,6 +16,9 @@ public class AddressPage extends HomePage {
     String STATE="//input[contains(@placeholder,'state')]";
     String SUBMIT="//app-address-create//button[@id='submitButton']";
 
+    public AddressPage(WebDriver webDriver){
+        super(webDriver);
+    }
     public void addAddress(String country,String addressLabel,String mobileNumber,String address,String zipcode,String city,String state){
         webDriver.findElement(By.cssSelector(ADD_ADDRESS)).click();
         webDriver.findElement(By.xpath(COUNTRY)).sendKeys(country);

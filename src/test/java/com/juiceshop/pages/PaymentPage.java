@@ -1,6 +1,8 @@
 package com.juiceshop.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
@@ -17,6 +19,9 @@ public class PaymentPage extends HomePage {
     String SUBMIT="submitButton";
     String CONTINUE_TO_PAYMENT="button[aria-label='Proceed to delivery method selection']";
 
+    public PaymentPage(WebDriver webDriver){
+        super(webDriver);
+    }
     public void selectDeliveryAddress(String deliveryAddress){
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(SELECT_DELIVERY_ADDRESS,deliveryAddress))));
         webDriver.findElement(By.xpath(String.format(SELECT_DELIVERY_ADDRESS,deliveryAddress))).click();

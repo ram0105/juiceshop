@@ -6,11 +6,11 @@ import com.juiceshop.testdriver.DriverFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-public class JuiceShopTest {
-    HomePage homePage = new HomePage();
-    BasketPage basketPage = new BasketPage();
-    PaymentPage paymentPage = new PaymentPage();
-    AddressPage addressPage = new AddressPage();
+public class JuiceShopTest extends BaseTest {
+    HomePage homePage = new HomePage(null);
+    BasketPage basketPage = new BasketPage(null);
+    PaymentPage paymentPage = new PaymentPage(null);
+    AddressPage addressPage = new AddressPage(null);
     public Faker faker = new Faker();
     String email = faker.internet().emailAddress();
     String password = faker.internet().password();
@@ -50,6 +50,5 @@ public class JuiceShopTest {
 
     @AfterClass
     public void close() {
-        DriverFactory.closeDriver();
     }
 }

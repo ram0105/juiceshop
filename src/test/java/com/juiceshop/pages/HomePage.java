@@ -9,7 +9,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HomePage {
-    static WebDriver webDriver = DriverFactory.getDriver();
+    WebDriver webDriver;
+    public HomePage(WebDriver driver){
+        webDriver=driver;
+    }
     WebDriverWait wait = new WebDriverWait(webDriver, 10);
     String SEARCH_ICON = "//mat-icon[text()[normalize-space() ='search']]";
     String SEARCH_CLOSE_ICON = "//mat-icon[text()[normalize-space() ='close']]";
@@ -72,6 +75,6 @@ public class HomePage {
     }
 
     void navigate(String url) {
-        webDriver.get(DriverFactory.baseUrl + url);
+        webDriver.get(new DriverFactory().baseUrl + url);
     }
 }

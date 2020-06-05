@@ -11,8 +11,11 @@ public class BasketPage extends HomePage {
     String BASKET="button[aria-label='Show the shopping cart']";
     String BASKET_ITEMS="app-basket mat-table mat-row";
     String CHECKOUT="app-basket button[id='checkoutButton']";
-    HomePage homePage=new HomePage();
+    HomePage homePage=new HomePage(null);
 
+    public BasketPage(WebDriver webDriver){
+        super(webDriver);
+    }
     public void openBasket(){
         webDriver.findElement(By.cssSelector(BASKET)).click();
     }
